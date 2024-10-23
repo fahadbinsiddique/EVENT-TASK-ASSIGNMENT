@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: white;
+            color: black;
+            transition:  0.3s 0.3s;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 20px;
+        }
+        #counter {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        #hiddentext {
+            display: none;
+        }
+        .darkMode{
+            background-color: black;
+            color: white;
+        }
+        h3{
+            display: inline-block;
+            
+        }
+        #inp1{
+            color: blue;
+            font-size: 20px;
+        }
+        #inp2{
+            color: blue;
+            font-size: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <h1>HELLO, LET'S START</h1>
+
+    <button id="alert">WARNING</button><br><br>
+    
+    <h1>Click the Button to Increase the Counter</h1>
+    
+    <button  id="count">Click Me</button>
+    <button  id="counterShow">Counter Display</button> <br>
+    <button  id="showhide">Show/Hide Text</button><br>
+    <p       id="hiddentext">This is the text that will be shown or hidden.</p>
+    <button  id="theme">Change Mode</button><br>
+    <input type="number" id="inp1"> <h3>+</h3>
+    <input type="number" id="inp2"> 
+    <button  id="result">Show Result</button>
+    <h2      id="output"></h2>
+    <script>
+        // 1. Create a button that, when clicked shows alert 'button is clicked.
+
+        let alertId= document.getElementById('alert')
+        alertId.addEventListener('click',function () {
+            alert('Hello World')
+        })
+        //-------------------------------------------------------
+        //2. Create a simple webpage with a button, When the button is clicked, a counter displayed on the page should increase by one.
+        
+        let counter = 0;
+        let catchid = document.getElementById('count')
+        catchid.addEventListener('click',function () {
+            counter++;
+            document.getElementById('counterShow').innerText=counter;
+        })
+        //-------------------------------------------------------
+        //3. Create a button that toggles between showing and hiding a block of text.
+        
+        let button = document.getElementById('showhide')
+        let text = document.getElementById('hiddentext')
+        button.addEventListener('click',function(){
+            if ( text.style.display === 'none') {
+                text.style.display = 'block'
+            } else {
+                text.style.display ='none'
+            }
+        })
+        //-------------------------------------------------------
+        //4. Create a button that toggles between dark mode and light mode when clicked.
+        
+        let mode = document.getElementById('theme')
+        let body = document.body;
+        mode.addEventListener('click',function(){
+            body.classList.toggle('darkMode') 
+            if (body.classList.contains('darkMode')) {
+                mode.textContent = 'Switch to Light mode'
+            } else {
+                mode.textContent = 'Switch to Dark Mode'
+            }
+        })
+        //-------------------------------------------------------
+        let inp1 = document.getElementById('inp1');
+        let inp2 = document.getElementById('inp2');
+        let buttonSum = document.getElementById('result');
+        let output = document.getElementById('output')
+        buttonSum.addEventListener('click',function(){
+            let numb1 = Number(inp1.value)
+            let numb2 = Number(inp2.value)
+            let sum = numb1 + numb2
+            output.innerText = 'Result: ' + sum;
+        })
+    </script>
+</body>
+</html>
